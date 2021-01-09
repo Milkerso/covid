@@ -1,0 +1,44 @@
+<div class="container-fluid">
+    <h1 style="text-align:center">Szczegółowe dane dla województw w Polsce</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+                <!-- Position Column -->
+                <ng-container matColumnDef="Lp">
+                    <th mat-header-cell *matHeaderCellDef> Lp. </th>
+                    <td mat-cell *matCellDef="let element" [ngStyle]="{'color':'black','font-size': '20px'}"> {{element.Lp}} </td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="region">
+                    <th mat-header-cell *matHeaderCellDef> Województwo </th>
+                    <td mat-cell *matCellDef="let element" [ngStyle]="{'color':'black','font-size': '20px'}"> {{element.region}} </td>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="infected">
+                    <th mat-header-cell *matHeaderCellDef> Przypadki </th>
+                    <td mat-cell *matCellDef="let element" [ngStyle]="{'color':'red','font-size': '24px', 'font-weight': 'bold' }"> {{element.infected}} </td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="deceased">
+                    <th mat-header-cell *matHeaderCellDef> Śmierci </th>
+                    <td mat-cell *matCellDef="let element" [ngStyle]="{'color':'black','font-size': '24px', 'font-weight': 'bold' }"> {{element.deceased}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row class="remove-background" (mouseover)="onMouseOver(e)" *matRowDef="let row let e = index; columns: displayedColumns;" [ngClass]="{'mat-elevation-z8' : e == mouseOverIndex}"></tr>
+            </table>
+        </div>
+        <div class="col-md-5">
+            <jqxChart #myChart [width]="getWidth()" [height]="1000" [title]="'Wykres dla województw'" [description]="''" [enableAnimations]="true" [showLegend]="true" [padding]="padding" [titlePadding]="titlePadding" [source]="sampleData" [xAxis]="xAxis" [valueAxis]="valueAxis"
+                [seriesGroups]="seriesGroups" [colorScheme]="'scheme01'">
+            </jqxChart>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="container-fluid">
+    <div style="justify-content: center;" class="row">
+        <div style="min-width: 200px; margin-right: 20px;" class="col-md-4" fxFlex="50" fxFlex.xl="16.6" fxFlex.lg="16.6" fxFlex.md="33.3" fxFlex.sm="33.3" class="p-1">
+            <mat-card style=" background-color:pink !important" class="gradient-green tile p-1">
+                <mat-icon>group</mat-icon>
+                <h2>{{confirmed}}</h2>
+                <p>Liczba przypadków</p>
+            </mat-card>
+        </div>
+        <div style="min-width: 200px; margin-right: 20px;margin-left: 20px;" class="col-md-4" fxFlex="50" fxFlex.xl="16.6" fxFlex.lg="16.6" fxFlex.md="33.3" fxFlex.sm="33.3" class="p-1">
+            <mat-card style="background-color:green !important" class="gradient-red tile p-1 ">
+                <mat-icon>local_hospital</mat-icon>
+                <h2>{{recovered}}</h2>
+                <p>Wyleczeni</p>
+            </mat-card>
+        </div>
+        <div style="min-width: 200px ;margin-left: 20px; " class="col-md-4 " fxFlex="50 " fxFlex.xl="16.6 " fxFlex.lg="16.6 " fxFlex.md="33.3 " fxFlex.sm="33.3 " class="p-1 ">
+            <mat-card style="background-color:red !important" class="gradient-orange tile p-1 ">
+                <mat-icon>person_remove</mat-icon>
+                <h2>{{deaths}}</h2>
+                <p>Zgony</p>
+            </mat-card>
+        </div>
+    </div>
+</div>
+<jqxChart #myChart [width]="getWidth() " [height]="500 " [title]=" 'Polska - ostatni miesiąc' " [enableAxisTextAnimation]="true " [description]=" '' " [animationDuration]="1000 " [showLegend]="true " [enableAnimations]="true " [padding]="padding
+                " [titlePadding]="titlePadding " [source]="data " [xAxis]="xAxis " [valueAxis]="valueAxis " [seriesGroups]="seriesGroups " [colorScheme]=" 'scheme01' ">
+</jqxChart>
+<table>
+    <tbody>
+        <tr>
+            <td style="padding-left: 50px ">
+                <p>Typ wykresu:</p>
+                <jqxDropDownList (onChange)="seriesOnChange($event) " [width]="200 " [height]="25 " [selectedIndex]="2 " [dropDownHeight]="100 " [source]="seriesList ">
+                </jqxDropDownList>
+            </td>
+            <td>
+                <p>Wybierz kolor:</p>
+                <jqxDropDownList (onChange)="colorsOnChange($event) " [width]="200 " [height]="25 " [selectedIndex]="2 " [dropDownHeight]="100 " [source]="colorsSchemesList ">
+                </jqxDropDownList>
+            </td>
+        </tr>
+    </tbody>
+</table>

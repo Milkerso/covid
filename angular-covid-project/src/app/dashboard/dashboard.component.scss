@@ -1,0 +1,33 @@
+table {
+    display: flex;
+    background-color: gray;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: auto;
+}
+
+jqxChart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tile {
+    justify-content: center;
+    text-align: right;
+    .mat-icon {
+        position: absolute;
+        left: 4px;
+        top: 50%;
+        line-height: 0;
+        font-size: 54px;
+        opacity: 0.3;
+    }
+    h2 {
+        font-weight: 500;
+    }
+    p {
+        text-transform: uppercase;
+    }
+}

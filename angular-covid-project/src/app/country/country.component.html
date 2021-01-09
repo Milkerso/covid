@@ -1,0 +1,65 @@
+<div class="summary">
+    Statystyki pobrane z dnia:
+    <strong> {{asOnDate | date : 'MMM d, y hh:mm a'}}</strong>
+</div>
+<div class="container-fluid">
+    <div style="justify-content: center;" class="row">
+        <div style="min-width: 200px; margin-right: 20px;" class="col-md-4" fxFlex="50" fxFlex.xl="16.6" fxFlex.lg="16.6" fxFlex.md="33.3" fxFlex.sm="33.3" class="p-1">
+            <mat-card style=" background-color:pink !important" class="gradient-green tile p-1">
+                <mat-icon>group</mat-icon>
+                <h2>{{totalCases}}</h2>
+                <p>Liczba przypadków</p>
+            </mat-card>
+        </div>
+        <div style="min-width: 200px; margin-right: 20px;margin-left: 20px;" class="col-md-4" fxFlex="50" fxFlex.xl="16.6" fxFlex.lg="16.6" fxFlex.md="33.3" fxFlex.sm="33.3" class="p-1">
+            <mat-card style="background-color:green !important" class="gradient-red tile p-1 ">
+                <mat-icon>local_hospital</mat-icon>
+                <h2>{{totalRecovered}}</h2>
+                <p>Wyleczeni</p>
+            </mat-card>
+        </div>
+        <div style="min-width: 200px ;margin-left: 20px; " class="col-md-4 " fxFlex="50 " fxFlex.xl="16.6 " fxFlex.lg="16.6 " fxFlex.md="33.3 " fxFlex.sm="33.3 " class="p-1 ">
+            <mat-card style="background-color:red !important" class="gradient-orange tile p-1 ">
+                <mat-icon>person_remove</mat-icon>
+                <h2>{{totalDeaths}}</h2>
+                <p>Zgony</p>
+            </mat-card>
+        </div>
+    </div>
+</div>
+<mat-form-field style="margin-left: 20px;">
+    <input matInput (keyup)="applyFilter($event.target.value)" (keydown)="keydown($event.target.value)" placeholder="Państwo">
+</mat-form-field>
+
+<div *ngIf="countriesSummary.length !== 0; else emptyDiv" class="table-container">
+    <table mat-table [dataSource]="displayItems" class="mat-elevation-z8">
+        <ng-container matColumnDef="no">
+            <th mat-header-cell *matHeaderCellDef>Lp</th>
+            <td mat-cell *matCellDef="let element; let i = index"> {{(pageNumber * 10) + i + 1}} </td>
+        </ng-container>
+        <ng-container matColumnDef="country">
+            <th mat-header-cell *matHeaderCellDef>Kraje</th>
+            <td mat-cell *matCellDef="let element"><a [routerLink]="'/live/' + element.Slug"> {{element.Country}} </a></td>
+        </ng-container>
+        <ng-container matColumnDef="confirmed">
+            <th mat-header-cell *matHeaderCellDef>Potwierdzone przypadki</th>
+            <td mat-cell *matCellDef="let element"> {{element.TotalConfirmed}} </td>
+        </ng-container>
+        <ng-container matColumnDef="deaths">
+            <th mat-header-cell *matHeaderCellDef>Zgony</th>
+            <td mat-cell *matCellDef="let element"> {{element.TotalDeaths}} </td>
+        </ng-container>
+        <ng-container matColumnDef="recovered">
+            <th mat-header-cell *matHeaderCellDef>Wyzdrowienia</th>
+            <td mat-cell *matCellDef="let element"> {{element.TotalRecovered}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [length]="countriesSummary.length" [pageSize]="10" (page)="pageChange($event)">
+    </mat-paginator>
+</div>
+
+<ng-template #emptyDiv>
+    Ładowanie danych
+</ng-template>

@@ -1,0 +1,25 @@
+<div class="wrapper">
+    <canvas baseChart *ngIf="chartData.length !== 0" [datasets]="lineChartData" [labels]="lineChartLabels" [colors]="lineChartColors" [legend]="false" [chartType]="'line'">
+    </canvas>
+</div>
+<hr>
+<div class="predict">
+    <button mat-raised-button color="primary" (click)="prediction()" *ngIf="!isRegressionDone">Prognoza</button>
+    <div *ngIf="isRegressionDone">
+        Przypuszczalne wartości <br>
+        <div class="predict-summary">
+            <div>
+                <span class="label">Wzrost w 7 dni</span>
+                <span class="value">{{getPredictedValue(7)}}</span>
+            </div>
+            <div>
+                <span class="label">Wzrost w 30 dni</span>
+                <span class="value">{{getPredictedValue(30)}}</span>
+            </div>
+            <div>
+                <span class="label">Wzrost po <input  style ="width: 50px;" type="number" [value]="predictDay" (change)="predictDay = $event.target.value" /> dniach</span>
+                <span class="value">{{getPredictedValue(predictDay)}}</span>
+            </div>
+        </div>
+    </div>
+</div>

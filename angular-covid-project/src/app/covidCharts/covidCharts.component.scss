@@ -1,0 +1,11 @@
+table {
+    width: 100%;
+}
+
+.mat-row:hover {
+    cursor: pointer;
+}
+
+[mat-row].remove-background {
+    background: none;
+}

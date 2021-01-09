@@ -1,0 +1,17 @@
+hr {
+    margin: 25px 0px;
+}
+
+@media only screen and (max-width: 600px) {
+    .summary {
+        flex-direction: column;
+        align-items: center;
+        .country-name {
+            margin-bottom: 25px;
+        }
+        div {
+            min-width: 200px;
+            margin-bottom: 10px;
+        }
+    }
+}

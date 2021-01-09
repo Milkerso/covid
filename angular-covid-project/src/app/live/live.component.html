@@ -1,0 +1,44 @@
+<h1 style="text-align:center">{{countryName}}</h1>
+<div class="container-fluid">
+    <div style="justify-content: center;" class="row">
+        <div style="min-width: 200px; margin-right: 20px;" class="col-md-4" fxFlex="50" fxFlex.xl="16.6" fxFlex.lg="16.6" fxFlex.md="33.3" fxFlex.sm="33.3" class="p-1">
+            <mat-card style=" background-color:pink !important" class="gradient-green tile p-1">
+                <mat-icon>group</mat-icon>
+                <h2>{{confirmedRecord?.Confirmed}}</h2>
+                <p>Liczba przypadków</p>
+            </mat-card>
+        </div>
+        <div style="min-width: 200px; margin-right: 20px;margin-left: 20px;" class="col-md-4" fxFlex="50" fxFlex.xl="16.6" fxFlex.lg="16.6" fxFlex.md="33.3" fxFlex.sm="33.3" class="p-1">
+            <mat-card style="background-color:green !important" class="gradient-red tile p-1 ">
+                <mat-icon>local_hospital</mat-icon>
+                <h2>{{confirmedRecord?.Recovered}}</h2>
+                <p>Wyleczeni</p>
+            </mat-card>
+        </div>
+        <div style="min-width: 200px ;margin-left: 20px; " class="col-md-4 " fxFlex="50 " fxFlex.xl="16.6 " fxFlex.lg="16.6 " fxFlex.md="33.3 " fxFlex.sm="33.3 " class="p-1 ">
+            <mat-card style="background-color:red !important" class="gradient-orange tile p-1 ">
+                <mat-icon>person_remove</mat-icon>
+                <h2>{{confirmedRecord?.Deaths}}</h2>
+                <p>Zgony</p>
+            </mat-card>
+        </div>
+    </div>
+</div>
+<hr>
+<mat-tab-group mat-stretch-tabs>
+    <mat-tab label="Potwierdzone przypadki">
+        <ng-template matTabContent>
+            <app-chart title="Confirmed" [country]="countrySlug"></app-chart>
+        </ng-template>
+    </mat-tab>
+    <mat-tab label="Zgony">
+        <ng-template matTabContent>
+            <app-chart title="Deaths" [country]="countrySlug"></app-chart>
+        </ng-template>
+    </mat-tab>
+    <mat-tab label="Wyleczeni">
+        <ng-template matTabContent>
+            <app-chart title="Recovered" [country]="countrySlug"></app-chart>
+        </ng-template>
+    </mat-tab>
+</mat-tab-group>

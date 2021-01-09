@@ -1,0 +1,52 @@
+.wrapper {
+    display: block;
+    margin-top: 10px;
+}
+
+.predict {
+    text-align: center;
+    margin: 25px 0px;
+    font-weight: 300;
+}
+
+hr {
+    margin: 20px 0px;
+}
+
+.predict-summary {
+    display: flex;
+    margin-top: 15px;
+    justify-content: space-evenly;
+    font-weight: 300;
+    div {
+        width: 150px;
+        padding: 10px 5px;
+        text-align: center;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 5%;
+        span {
+            display: block;
+            margin: 5px 0;
+            input {
+                width: 30px;
+            }
+        }
+        .label {
+            font-size: 11px;
+        }
+        .value {
+            font-size: 20px;
+            font-weight: 400;
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .predict-summary {
+        flex-direction: column;
+        align-items: center;
+        div {
+            margin-bottom: 10px;
+        }
+    }
+}

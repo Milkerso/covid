@@ -1,15 +1,15 @@
 <!-- Header - Często header stanowi osobny komponent
 Wykorzystano https://material.angular.io/components/toolbar/overview -->
-<mat-toolbar color="primary">
+<mat-toolbar>
     <mat-toolbar-row>
-        <button mat-button [routerLink]="['/dash']"><img src="assets/covid.jpg" width="134" height="64"></button>
+        <button class="coronaButton"  mat-flat-button [routerLink]="['/dash']"><img class="corona" src="assets/corona.png"></button>
         <!-- [routerLink]="['/students']" - oznacza, że po naciśnięciu przycisku, aplikacja
     przeniesie użytkownika na url /students, a co za tym idzie w miejsce <router-outlet>
     zostanie podstawiony komponent Students. Zgodnie z deklaracją w app-routing.module.ts -->
-        <button mat-button [routerLink]="['/dash']">Polska</button>
-        <button mat-button [routerLink]="['/statistics']">Świat</button>
-        <button mat-button [routerLink]="['/wojewodztwa']">Województwa</button>
-        <button mat-button [routerLink]="['/countries']">Kraje</button>
+        <button class="menuButtons" mat-button [routerLink]="['/dash']">Polska</button>
+        <button class="menuButtons" mat-button [routerLink]="['/statistics']">Świat</button>
+        <button class="menuButtons" mat-button [routerLink]="['/wojewodztwa']">Województwa</button>
+        <button class="menuButtons" mat-button [routerLink]="['/countries']">Kraje</button>
 
 
 

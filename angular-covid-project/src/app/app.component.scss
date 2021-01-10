@@ -1,6 +1,9 @@
 // SCSS to nakłdka na CSS
 mat-toolbar{
   margin-bottom: 40px;
+  background-color: #002642;
+  color: white;
+  height: 8%;
 }
 
 footer {
@@ -11,6 +14,49 @@ footer {
   padding: 3px 15px;
   -webkit-text-fill-color: white;
 }
+.corona{
+  margin-top:55px;
+  width:120px;
+  height: 120px;
+}
+.coronaButton{
+  outline: none;
+  border: none;
+  transform: perspective(1px) translateZ(0);
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  background-color: transparent;
+}
 
-
-
+.coronaButton:hover, .coronaButton:focus, .coronaButton:active {
+  -webkit-transform: translateY(12px);
+  transform: translateY(12px);
+  background-color: transparent;
+}
+.menuButtons{
+  margin-left:1%;
+  width:150px;
+  font-size: 20px;
+  display:inline-block;
+  font-family: 'Righteous', cursive;
+}
+.menuButtons:hover:after{
+  transform: scale(1);
+}
+.menuButtons:after{
+  display:block;
+  content: '';
+  border-bottom: solid 3px #1564A1;
+  transform: scaleX(0);
+  transition: transform 250ms ease-in-out;
+  transform-origin:  0 50%;
+}

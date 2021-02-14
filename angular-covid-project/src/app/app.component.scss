@@ -1,9 +1,11 @@
 // SCSS to nakłdka na CSS
 mat-toolbar{
-  margin-bottom: 40px;
   background-color: #002642;
   color: white;
   height: 8%;
+  position: sticky;
+  top:0;
+  z-index: 10;
 }
 
 footer {
@@ -26,7 +28,6 @@ footer {
   display: inline-block;
   vertical-align: middle;
   -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
@@ -50,13 +51,17 @@ footer {
   font-family: 'Righteous', cursive;
 }
 .menuButtons:hover:after{
-  transform: scale(1);
+  transform: scaleX(1.27);
 }
+
 .menuButtons:after{
   display:block;
   content: '';
   border-bottom: solid 3px #1564A1;
   transform: scaleX(0);
   transition: transform 250ms ease-in-out;
-  transform-origin:  0 50%;
+  transform-origin:  50% 50%;
+}
+.menuButtons:focus{
+  outline: 3px solid white;
 }

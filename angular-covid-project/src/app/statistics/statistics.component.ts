@@ -34,10 +34,11 @@ export class StatisticsComponent implements AfterViewInit, OnInit {
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);  constructor(private _covid: CovidService) { }
   displayedColumns: string[] = ['Lp','region', 'infected','deceased','deaths'];
   @ViewChild(MatPaginator,{static: false}) paginator: MatPaginator;
- 
+
+
+
   @ViewChild('secondChart', { static: false }) secondChart: jqxChartComponent;
   ngAfterViewInit(): void {
-  
     this.dataSource.paginator = this.paginator;
     let data1 = this.secondChart.source();
     this._covid.getGlobalData()
@@ -59,15 +60,15 @@ export class StatisticsComponent implements AfterViewInit, OnInit {
     .subscribe(res => {
       let globalResult = res['result'];
       ELEMENT_DATA.pop();
-      for(var i=0;i<globalResult.length;i++)
+      for(let i=0;i<globalResult.length;i++)
       {
         let date1 = globalResult[i];
         let date2 = Object.keys(date1)
         // let date2 = Object.keys(date1.toString());
-        // let date3 = date1[date2]; 
-        // let date4 = date3["confirmed"]; 
-  
-        let date3 = date1[date2[0]]
+        // let date3 = date1[date2];
+        // let date4 = date3["confirmed"];
+
+        let date3 = date1[date2[0]];
         ELEMENT_DATA.push({ Lp: i, region: date2[0], infected: date3.confirmed, deceased: date3.recovered ,deaths: date3.deaths})
 
       }
@@ -81,7 +82,7 @@ export class StatisticsComponent implements AfterViewInit, OnInit {
 
     });
 
-  
+
   }
   data1: any[] =
     [
@@ -219,7 +220,7 @@ valueAxis: any =
     public recovered;
     public deaths;
     @ViewChild('myChart', {static: false}) myChart: jqxChartComponent;
-  
+
     getDataForCountry()
     {
       let date3 = 0;
@@ -237,17 +238,16 @@ valueAxis: any =
         this.data.pop();
         for (let i = res['count']-30; i < res['count']; i++) {
           let date1 = res['result'];
-
-          let date2 = Object.keys(date1) 
+          let date2 = Object.keys(date1)
           let date3 = date1[date2[i]]
           date9 = date3["confirmed"];
 
           date4 = date3["deaths"];
           data10.push(date9);
-          
+
           date5 = date3["recovered"];
           date6 = date2[i];
-       
+
           date7 = new Date(date6);
           let month = date7.getMonth()+1;
           date8 = (date7.getDate()+"/"+month).toString();
@@ -262,10 +262,10 @@ valueAxis: any =
             maxDate = date5;
           }
         }
-        this.deaths=date4;
-        this.confirmed=date9;
-        this.recovered=date5;
-        this.valueAxis.maxValue = maxDate
+        this.deaths=date4.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ');
+        this.confirmed=date9.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ');
+        this.recovered=date5.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ');
+        this.valueAxis.maxValue = maxDate;
         this.myChart.update();
         let trainData = [];
         let trainData1 = [];
@@ -276,7 +276,7 @@ valueAxis: any =
         for (let i = 0; i < res['count']; i++){
           let date1 = res['result'];
 
-          let date2 = Object.keys(date1) 
+          let date2 = Object.keys(date1)
           let date3 = date1[date2[i]]
           date9 = date3["confirmed"];
 
@@ -312,15 +312,15 @@ valueAxis: any =
           })
         }
         precision(){
-      
+
         }
         getPredictedValue(days: number): string {
-          return isNaN(parseInt('' + days)) ? '0' : (this.lastData * (this.growthRate ** days)).toFixed(0);
+          return isNaN(parseInt('' + days)) ? '0' : (this.lastData * (this.growthRate ** days)).toFixed(0).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ');
         }
         getPredictedValue1(days: number): string {
-          return isNaN(parseInt('' + days)) ? '0' : (this.recovered * (this.growthRate1 ** days)).toFixed(0);
+          return isNaN(parseInt('' + days)) ? '0' : (this.recovered * (this.growthRate1 ** days)).toFixed(0).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ');
         }
         getPredictedValue2(days: number): string {
-          return isNaN(parseInt('' + days)) ? '0' : (this.deaths * (this.growthRate2 ** days)).toFixed(0);
+          return isNaN(parseInt('' + days)) ? '0' : (this.deaths * (this.growthRate2 ** days)).toFixed(0).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ');
         }
 }

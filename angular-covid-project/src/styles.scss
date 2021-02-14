@@ -2,3 +2,43 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+//tytuł
+.jqx-chart-title-text{
+  font-size: 30px;
+  font-family: 'Rubik', sans-serif;
+  fill: black;
+}
+//Ilość
+.jqx-chart-axis-description{
+  font-size: 20px;
+  font-family: 'Rubik', sans-serif;
+  fill: black;
+}
+//podziałka wykresu
+.jqx-chart-axis-text{
+  font-size: 12px;
+  font-family: 'Rubik', sans-serif;
+  fill: black;
+}
+//legenda
+.jqx-chart-legend-text{
+  font-size: 18px;
+  font-family: 'Rubik', sans-serif;
+  fill: black;
+  margin-bottom: 100px;
+}
+.jqx-chart-title-description{
+  font-size: 33px;
+  font-family: 'Rubik', sans-serif;
+  fill: black;
+}
+.jqx-fill-state-pressed{
+  background: #D5E1EB;
+}
+.jqx-fill-state-hover {
+  background: #D5E1EB;
+  cursor: pointer;
+}
+.jqx-widget{
+  cursor: pointer;
+}

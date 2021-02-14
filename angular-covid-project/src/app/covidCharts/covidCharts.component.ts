@@ -152,6 +152,4 @@ export class CovidChartsComponent implements OnInit, AfterViewInit {
         ]
       }
     ];
-
-
 }

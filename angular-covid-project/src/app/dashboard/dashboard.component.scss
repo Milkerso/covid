@@ -1,3 +1,4 @@
+
 table {
     display: flex;
     background-color: gray;
@@ -7,12 +8,18 @@ table {
     width: auto;
 }
 
-jqxChart {
+jqxChart{
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
+    outline: none;
+    border: none;
+    background: transparent;
+    left:0;
+    margin-bottom: 1%;
+    margin-top: 4%;
 }
-
+.jqx-chart-title-description
 .tile {
     justify-content: center;
     text-align: right;
@@ -30,4 +37,88 @@ jqxChart {
     p {
         text-transform: uppercase;
     }
+}
+
+.chartChanger{
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  bottom:25%;
+  right: 0;
+}
+.koloryWykresu{
+  margin-top:10%;
+}
+.select{
+  width: 150px;
+}
+.custom-select{
+  width: 5%;
+  height: 50px;
+}
+.customLabel{
+  font-family: 'Rubik', sans-serif;
+  color: black;
+  font-size: 18px;
+  display: block;
+}
+.casesContainer{
+  width:100%;
+}
+.dataInfo{
+  z-index: -10;
+  justify-content: center;
+  display:flex;
+}
+.cards{
+  padding: 1%;
+  text-align: center;
+  width:100%;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 8px 4px -4px gray;
+}
+.cardCases{
+  //border-left: 5px solid #002642;
+  border-right: 5px solid #002642;
+  //border-bottom: 5px solid #002642;
+  background: #FBFF66;
+}
+.cardCured{
+  //border-bottom: 5px solid #002642;
+  background: #A4E28E;
+}
+.cardDead{
+  //border-right: 5px solid #002642;
+  //border-bottom: 5px solid #002642;
+  border-left: 5px solid #002642;
+  background: #FF6666;
+}
+.casesIcon{
+  width:40%;
+  text-align: right;
+  padding-right: 5%;
+}
+.textCases{
+  width:60%;
+  text-align: left;
+  padding-left: 5%;
+}
+.text{
+  font-family: 'Righteous', cursive;
+  font-size: 20px;
+}
+.text1{
+  padding-left: 7%;
+}
+.wyniki{
+  font-size: 38px;
+  font-weight: bold;
+}
+.wynik1{
+  padding-left: 8%;
+}
+.cardImage{
+  height: 80px;
+  width: 80px;
 }

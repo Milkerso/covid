@@ -37,7 +37,6 @@ export class ChartComponent implements OnInit {
     }]
     this.api.getLiveData(this.country, this.title.toLowerCase())
       .subscribe((data: any[]) => {
-        // let filteredData = data.filter(item => item.Cases > 0);
         this.chartData = data.filter(item => item.Cases > 0);
         this.lineChartData = [
           { data: this.chartData.map(c => c.Cases) }
@@ -48,16 +47,13 @@ export class ChartComponent implements OnInit {
 
   prediction() {
     let trainData = [];
-    for (let i = 0; i < this.chartData.length; i++){
+    for (let i = 0; i < this.chartData.length; i++) {
       trainData.push([i, Math.log(this.chartData[i].Cases)]);
-   //   console.log(this.chartData[i].Cases);
     }
-   // console.log(trainData)
     const result = regression.linear(trainData);
     this.growthRate = Math.exp(result.equation[0]);
     this.isRegressionDone = true;
     this.lastData = this.chartData.slice(-1)[0].Cases;
-    console.log(this.lastData);
   }
 
   getPredictedValue(days: number): string {

@@ -36,7 +36,7 @@ import { MatTableModule } from '@angular/material/table';
     TableListComponent,
     LiveComponent,
     ChartComponent,
-    CountryComponent
+    CountryComponent,
 
   ],
   imports: [

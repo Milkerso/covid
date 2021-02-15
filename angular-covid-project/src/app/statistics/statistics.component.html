@@ -1,97 +1,93 @@
-<div class="container-fluid">
-    <div style="justify-content: center;" class="row">
-        <div style="min-width: 200px; margin-right: 20px;" class="col-md-4" fxFlex="50" fxFlex.xl="16.6" fxFlex.lg="16.6" fxFlex.md="33.3" fxFlex.sm="33.3" class="p-1">
-            <mat-card style=" background-color:pink !important" class="gradient-green tile p-1">
-                <mat-icon>group</mat-icon>
-                <h2>{{confirmed}}</h2>
-                <p>Liczba przypadków</p>
-            </mat-card>
-        </div>
-        <div style="min-width: 200px; margin-right: 20px;margin-left: 20px;" class="col-md-4" fxFlex="50" fxFlex.xl="16.6" fxFlex.lg="16.6" fxFlex.md="33.3" fxFlex.sm="33.3" class="p-1">
-            <mat-card style="background-color:green !important" class="gradient-red tile p-1 ">
-                <mat-icon>local_hospital</mat-icon>
-                <h2>{{recovered}}</h2>
-                <p>Wyleczeni</p>
-            </mat-card>
-        </div>
-        <div style="min-width: 200px ;margin-left: 20px; " class="col-md-4 " fxFlex="50 " fxFlex.xl="16.6 " fxFlex.lg="16.6 " fxFlex.md="33.3 " fxFlex.sm="33.3 " class="p-1 ">
-            <mat-card style="background-color:red !important" class="gradient-orange tile p-1 ">
-                <mat-icon>person_remove</mat-icon>
-                <h2>{{deaths}}</h2>
-                <p>Zgony</p>
-            </mat-card>
-        </div>
+<div class="casesContainer">
+  <div class="dataInfo">
+    <div class="cards cardCases">
+      <div class="casesIcon">
+        <img class="cardImage" src="../../assets/add-user.png">
+      </div>
+      <div class="textCases">
+        <p class="text">Liczba przypadków</p>
+        <h2 class="wyniki wynik1">{{confirmed}}</h2>
+      </div>
     </div>
+    <div class="cards cardCured">
+      <div class="casesIcon">
+        <img class="cardImage" src="../../assets/healthcare.png">
+      </div>
+      <div class="textCases">
+        <p class="text text1">Wyleczeni</p>
+        <h2 class="wyniki">{{menuRecovered}}</h2>
+      </div>
+    </div>
+    <div class="cards cardDead">
+      <div class="casesIcon">
+        <img class="cardImage" src="../../assets/remove-user.png">
+      </div>
+      <div class="textCases">
+        <p class="text text1">Zgony</p>
+        <h2 class="wyniki">{{menuDeaths}}</h2>
+      </div>
+    </div>
+  </div>
 </div>
-<jqxChart #myChart [width]="getWidth() " [height]="500 " [title]=" 'Statystyka dla świata - ostatni miesiąc' " [enableAxisTextAnimation]="true " [description]=" '' " [animationDuration]="1000 " [showLegend]="true " [enableAnimations]="true " [padding]="padding
-                " [titlePadding]="titlePadding " [source]="data " [xAxis]="xAxis " [valueAxis]="valueAxis " [seriesGroups]="seriesGroups " [colorScheme]=" 'scheme01' ">
+<jqxChart #myChart [width]="'100%' " [height]="550 " [title]=" 'Statystyka ze świata - dane z ostatniego miesiąca' " [enableAxisTextAnimation]="true " [description]=" '' " [animationDuration]="1000 " [showLegend]="true " [enableAnimations]="true " [padding]="padding
+                " [titlePadding]="titlePadding " [source]="data " [xAxis]="xAxis " [valueAxis]="valueAxis " [seriesGroups]="seriesGroups " [colorScheme]=" 'scheme01' " [showBorderLine]="false" [legendLayout]="legendLayout">
 </jqxChart>
-<table>
-    <tbody>
-        <tr>
-            <td style="padding-left: 50px ">
-                <p>Typ wykresu:</p>
-                <jqxDropDownList (onChange)="seriesOnChange($event) " [width]="200 " [height]="25 " [selectedIndex]="2 " [dropDownHeight]="100 " [source]="seriesList ">
-                </jqxDropDownList>
-            </td>
-            <td>
-                <p>Kolor wykresu:</p>
-                <jqxDropDownList (onChange)="colorsOnChange($event) " [width]="200 " [height]="25 " [selectedIndex]="2 " [dropDownHeight]="100 " [source]="colorsSchemesList ">
-                </jqxDropDownList>
-            </td>
-        </tr>
-    </tbody>
-</table>
-<div class="predict">
-    Przypuszczalne wartości <br>
-
-    <h3 class="predict" style="color:pink;margin-top: 30px;">Przypadki</h3>
-    <div class="predict-summary">
-        <div>
-            <span class="label">Wzrost w 7 dni</span>
-            <span class="value">{{getPredictedValue(7)}}</span>
-        </div>
-        <div>
-            <span class="label">Wzrost w 30 dni</span>
-            <span class="value">{{getPredictedValue(30)}}</span>
-        </div>
-        <div>
-            <span class="label">Wzrost po <input  style ="width: 50px;" type="number" [value]="predictDay" (change)="predictDay = $event.target.value" /> dniach</span>
-            <span class="value">{{getPredictedValue(predictDay)}}</span>
-        </div>
-    </div>
-    <h3 class="predict" style="color:green;margin-top: 30px;">Wyleczeni</h3>
-    <div class="predict-summary">
-        <div>
-            <span class="label">Wzrost w 7 dni</span>
-            <span class="value">{{getPredictedValue1(7)}}</span>
-        </div>
-        <div>
-            <span class="label">Wzrost w 30 dni</span>
-            <span class="value">{{getPredictedValue1(30)}}</span>
-        </div>
-        <div>
-            <span class="label">Wzrost po <input  style ="width: 50px;" type="number" [value]="predictDay" (change)="predictDay = $event.target.value" /> dniach</span>
-            <span class="value">{{getPredictedValue1(predictDay)}}</span>
-        </div>
-    </div>
-    <h3 class="predict" style="color:red;margin-top: 30px;">Zgony</h3>
-    <div class="predict-summary">
-        <div>
-            <span class="label">Wzrost w 7 dni</span>
-            <span class="value">{{getPredictedValue2(7)}}</span>
-        </div>
-        <div>
-            <span class="label">Wzrost w 30 dni</span>
-            <span class="value">{{getPredictedValue2(30)}}</span>
-        </div>
-        <div>
-            <span class="label">Wzrost po <input  style ="width: 50px;" type="number" [value]="predictDay" (change)="predictDay = $event.target.value" /> dniach</span>
-            <span class="value">{{getPredictedValue2(predictDay)}}</span>
-        </div>
-    </div>
+<div class="chartChanger">
+  <div class="typWykresu">
+    <label class="customLabel">Typ wykresu:</label>
+    <jqxDropDownList class="custom-select" (onChange)="seriesOnChange($event) " [width]="180" [height]="30" [selectedIndex]="2 " [dropDownHeight]="100 " [dropDownWidth]="180 " [source]="seriesList ">    </jqxDropDownList>
+  </div>
+  <div class="koloryWykresu">
+    <label class="customLabel">Wybierz kolor:</label>
+    <jqxDropDownList class="custom-select" (onChange)="colorsOnChange($event) " [width]="180" [height]="30" [selectedIndex]="2 " [dropDownHeight]="100 " [dropDownWidth]="180 " [source]="colorsSchemesList ">    </jqxDropDownList>
+  </div>
 </div>
-<table cellpadding="0" cellspacing="0">
+<div class="predict">
+  <div class="predictCases">
+    <div class="predict7days background-yellow">
+      <span class="label">Przewidywana zmiana po 7 dniach</span>
+      <span class="value">{{getPredictedValue(7)}}</span>
+    </div>
+    <div class="predict30days background-yellow">
+      <span class="label">Przewidywana zmiana po 30 dniach</span>
+      <span class="value">{{getPredictedValue(30)}}</span>
+    </div>
+    <div class="predictOwn background-yellow">
+      <span class="label">Przewidywana zmiana po <input class="inputs" type="number" [value]="predictDay" (change)="predictDay = $event.target.value" /> dniach</span>
+      <span class="value">{{getPredictedValue(predictDay)}}</span>
+    </div>
+  </div>
+  <div class="predictCured">
+    <div class="predict7days background-green">
+        <span class="label">Przewidywana zmiana po 7 dniach</span>
+        <span class="value">{{getPredictedValue1(7)}}</span>
+    </div>
+    <div class="predict30days background-green">
+      <span class="label">Przewidywana zmiana po 30 dniach</span>
+      <span class="value">{{getPredictedValue1(30)}}</span>
+    </div>
+    <div class="predictOwn background-green">
+      <span class="label">Przewidywana zmiana po <input class="inputs" type="number" [value]="predictDay" (change)="predictDay = $event.target.value" /> dniach</span>
+      <span class="value">{{getPredictedValue1(predictDay)}}</span>
+    </div>
+  </div>
+  <div class="predictDead">
+    <div class="predict7days background-red">
+      <span class="label">Przewidywana zmiana po 7 dniach</span>
+      <span class="value">{{getPredictedValue2(7)}}</span>
+    </div>
+    <div class="predict30days background-red">
+      <span class="label">Przewidywana zmiana po 30 dniach</span>
+      <span class="value">{{getPredictedValue2(30)}}</span>
+    </div>
+    <div class="predictOwn background-red">
+      <span class="label">Przewidywana zmiana po <input  class="inputs" type="number" [value]="predictDay" (change)="predictDay = $event.target.value" /> dniach</span>
+      <span class="value">{{getPredictedValue2(predictDay)}}</span>
+    </div>
+  </div>
+</div>
+
+<table cellpadding="0" cellspacing="0" style="margin-top: 30%">
     <tr>
         <td>
             <jqxChart #secondChart [width]="720" [height]="360" [title]="'Statystyka dla świata'" [description]="''" [showLegend]="false" [enableAnimations]="true" [padding]="padding" [titlePadding]="titlePadding" [source]="data1" [showToolTips]="true" [seriesGroups]="secondSeriesGroup"

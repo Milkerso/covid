@@ -1,44 +1,43 @@
-<div class="container-fluid">
-    <div style="justify-content: center;" class="row">
-        <div style="min-width: 200px; margin-right: 20px;" class="col-md-4" fxFlex="50" fxFlex.xl="16.6" fxFlex.lg="16.6" fxFlex.md="33.3" fxFlex.sm="33.3" class="p-1">
-            <mat-card style=" background-color:pink !important" class="gradient-green tile p-1">
-                <mat-icon>group</mat-icon>
-                <h2>{{confirmed}}</h2>
-                <p>Liczba przypadków</p>
-            </mat-card>
-        </div>
-        <div style="min-width: 200px; margin-right: 20px;margin-left: 20px;" class="col-md-4" fxFlex="50" fxFlex.xl="16.6" fxFlex.lg="16.6" fxFlex.md="33.3" fxFlex.sm="33.3" class="p-1">
-            <mat-card style="background-color:green !important" class="gradient-red tile p-1 ">
-                <mat-icon>local_hospital</mat-icon>
-                <h2>{{recovered}}</h2>
-                <p>Wyleczeni</p>
-            </mat-card>
-        </div>
-        <div style="min-width: 200px ;margin-left: 20px; " class="col-md-4 " fxFlex="50 " fxFlex.xl="16.6 " fxFlex.lg="16.6 " fxFlex.md="33.3 " fxFlex.sm="33.3 " class="p-1 ">
-            <mat-card style="background-color:red !important" class="gradient-orange tile p-1 ">
-                <mat-icon>person_remove</mat-icon>
-                <h2>{{deaths}}</h2>
-                <p>Zgony</p>
-            </mat-card>
-        </div>
+<div class="casesContainer">
+  <div class="dataInfo">
+    <div class="cards cardCases">
+      <div class="casesIcon">
+        <img class="cardImage" src="../../assets/add-user.png">
+      </div>
+      <div class="textCases">
+        <p class="text">Liczba przypadków</p>
+        <h2 class="wyniki wynik1">{{confirmed}}</h2>
+      </div>
     </div>
+    <div class="cards cardCured">
+      <div class="casesIcon">
+        <img class="cardImage" src="../../assets/healthcare.png">
+      </div>
+      <div class="textCases">
+        <p class="text text1">Wyleczeni</p>
+        <h2 class="wyniki">{{recovered}}</h2>
+      </div>
+    </div>
+    <div class="cards cardDead">
+      <div class="casesIcon">
+        <img class="cardImage" src="../../assets/remove-user.png">
+      </div>
+      <div class="textCases">
+        <p class="text text1">Zgony</p>
+        <h2 class="wyniki">{{deaths}}</h2>
+      </div>
+    </div>
+  </div>
 </div>
-<jqxChart #myChart [width]="getWidth() " [height]="500 " [title]=" 'Polska - ostatni miesiąc' " [enableAxisTextAnimation]="true " [description]=" '' " [animationDuration]="1000 " [showLegend]="true " [enableAnimations]="true " [padding]="padding
-                " [titlePadding]="titlePadding " [source]="data " [xAxis]="xAxis " [valueAxis]="valueAxis " [seriesGroups]="seriesGroups " [colorScheme]=" 'scheme01' ">
+<jqxChart id="myChart" #myChart [width]="'100%'" [height]="550" [title]="'Polska - dane z ostatniego miesiąca'" [enableAxisTextAnimation]="true " [description]=" '' " [animationDuration]="1000 " [showLegend]="true " [enableAnimations]="true " [padding]="padding" [titlePadding]="titlePadding " [source]="data " [xAxis]="xAxis " [valueAxis]="valueAxis " [seriesGroups]="seriesGroups " [colorScheme]=" 'scheme01' " [showBorderLine]="false" [legendLayout]="legendLayout">
 </jqxChart>
-<table>
-    <tbody>
-        <tr>
-            <td style="padding-left: 50px ">
-                <p>Typ wykresu:</p>
-                <jqxDropDownList (onChange)="seriesOnChange($event) " [width]="200 " [height]="25 " [selectedIndex]="2 " [dropDownHeight]="100 " [source]="seriesList ">
-                </jqxDropDownList>
-            </td>
-            <td>
-                <p>Wybierz kolor:</p>
-                <jqxDropDownList (onChange)="colorsOnChange($event) " [width]="200 " [height]="25 " [selectedIndex]="2 " [dropDownHeight]="100 " [source]="colorsSchemesList ">
-                </jqxDropDownList>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div class="chartChanger">
+  <div class="typWykresu">
+    <label class="customLabel">Typ wykresu:</label>
+    <jqxDropDownList class="custom-select" (onChange)="seriesOnChange($event) " [width]="180" [height]="30" [selectedIndex]="2 " [dropDownHeight]="100 " [dropDownWidth]="180 " [source]="seriesList ">    </jqxDropDownList>
+  </div>
+  <div class="koloryWykresu">
+    <label class="customLabel">Wybierz kolor:</label>
+    <jqxDropDownList class="custom-select" (onChange)="colorsOnChange($event) " [width]="180" [height]="30" [selectedIndex]="2 " [dropDownHeight]="100 " [dropDownWidth]="180 " [source]="colorsSchemesList ">    </jqxDropDownList>
+  </div>
+</div>

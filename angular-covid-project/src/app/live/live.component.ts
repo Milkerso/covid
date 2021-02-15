@@ -33,7 +33,6 @@ export class LiveComponent implements OnInit {
   ngOnInit(): void {
     this.api.getLiveDataForCountry(this.countrySlug)
       .subscribe(data => {
-        console.log(data);
         this.countryName = data[0].Country;
         this.confirmedRecord = this.groupBy(data).slice(-1)[0];
         this.summaryRecord.Confirmed = this.confirmedRecord.Confirmed;
@@ -42,22 +41,6 @@ export class LiveComponent implements OnInit {
         this.summaryRecord.Date = this.confirmedRecord.Date;
         this.confirmedLoading = false;
       }, error => {})
-    // this.api.getCurrentData(this.countrySlug, 'deaths')
-    //   .subscribe(data => {
-    //     this.deathsRecord = this.groupBy(data).slice(-1)[0];
-    //     this.deathsLoading = false;
-    //   }, error => {})
-    // this.api.getCurrentData(this.countrySlug, 'recovered')
-    //   .subscribe(data => {
-    //     this.recoveredRecord = this.groupBy(data).slice(-1)[0];
-    //     this.recoveredLoading = false;
-    //   }, error => {})
-    // this.api.getLiveData(this.countrySlug, 'confirmed')
-    //   .subscribe(data => this.confirmed = data, error => {})
-    // this.api.getLiveData(this.countrySlug, 'deaths')
-    //   .subscribe(data => this.deaths = data, error => {})
-    // this.api.getLiveData(this.countrySlug, 'recovered')
-    //   .subscribe(data => this.recovered = data, error => {})
   }
 
   groupBy(data: any[]): any[] {

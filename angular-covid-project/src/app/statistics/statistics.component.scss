@@ -6,15 +6,35 @@ table {
     width: 100%;
 }
 
-jqxChart {
+jqxChart{
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
-  margin-top: 4%;
   outline: none;
   border: none;
-  background: none;
-  padding: 0;
+  background: transparent;
+  left:0;
+  margin-bottom: 1%;
+  margin-top: 4%;
+}
+.jqx-chart-title-description
+.tile {
+  justify-content: center;
+  text-align: right;
+  .mat-icon {
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    line-height: 0;
+    font-size: 54px;
+    opacity: 0.3;
+  }
+  h2 {
+    font-weight: 500;
+  }
+  p {
+    text-transform: uppercase;
+  }
 }
 .wrapper {
     display: block;
@@ -118,9 +138,8 @@ jqxChart {
   padding-left: 7%;
 }
 .wyniki{
-  font-size: 40px;
+  font-size: 38px;
   font-weight: bold;
-  white-space: nowrap;
 }
 .wynik1{
   padding-left: 8%;
@@ -182,7 +201,6 @@ jqxChart {
   top: 0;
   width: 100%;
   height: 100%;
-  z-index: 1;
   opacity: 0.2;
   background: url(../../assets/calendar7.png);
   background-repeat: no-repeat;
@@ -198,7 +216,7 @@ jqxChart {
   height:100%;
   padding: 40px;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   box-shadow:10px 8px 18px -3px rgba(79,79,79,0.71);
   border-radius: 15px;
 }
@@ -229,8 +247,9 @@ jqxChart {
   overflow: hidden;
   box-shadow:10px 8px 18px -3px rgba(79,79,79,0.71);
   border-radius: 15px;
+  z-index: 0;
 }
-.predictOwn:before{
+.predictOwn::after{
   content: ' ';
   display: block;
   position: absolute;
@@ -238,12 +257,12 @@ jqxChart {
   top: 0;
   width: 100%;
   height: 100%;
-  z-index: 0;
   opacity: 0.2;
   background: url(../../assets/kisspng-missing-data-computer-icons-symbol-encapsulated-po-5ae4bbc53d9743.1670749515249397172523.png);
   background-repeat: no-repeat;
   background-size: 60%;
   background-position: center;
+  z-index: -2;
 }
 .background-yellow{
   background-color: #FBFF66;;
@@ -266,4 +285,31 @@ jqxChart {
   margin-top: 14%;
   font-weight: bold;
   white-space: nowrap;
+}
+.inputs{
+  width:25%;
+  z-index: 5;
+}
+.chartChanger{
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  bottom:25%;
+  right: 0;
+}
+.koloryWykresu{
+  margin-top:10%;
+}
+.select{
+  width: 150px;
+}
+.custom-select{
+  width: 5%;
+  height: 50px;
+}
+.customLabel{
+  font-family: 'Rubik', sans-serif;
+  color: black;
+  font-size: 18px;
+  display: block;
 }

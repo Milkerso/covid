@@ -25,7 +25,6 @@ export class CountryComponent implements OnInit {
 
   ngOnInit(): void {
     if (!this.api.isSummaryLoaded) {
-      console.log('The data')
       this.api.getSummary()
         .subscribe(data => {
           this.asOnDate = data.Date;

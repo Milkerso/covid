@@ -35,11 +35,9 @@ export class DashboardComponent implements OnInit{
     var maxDate = 0;
     this._covid.getCountryData()
       .subscribe(res => {
-        console.log(res);
-        console.log( this.legendLayout)
         let countResult = res['count'];
         this.data.pop();
-        for (let i = 0; i < 30; i++) {
+        for (let i = 0; i < countResult; i++) {
           let date = res['result'];
           let date1 = Object.keys(date)[i].toString();
           let date2 = date[date1];
@@ -59,12 +57,7 @@ export class DashboardComponent implements OnInit{
           date7 = new Date(date6);
           let month = date7.getMonth() + 1;
           date8 = (date7.getDate() + "/" + month).toString();
-          // data[i].a = date2;
           this.data.push({ Dzień: date8, b: date3, c: date4, d: date5 });
-          // data[i].b = date3;
-          // data[i].c = date4;
-          // data[i].d = date5;
-
         }
         this.deaths = date4.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ');
         this.confirmed = date3.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ');
@@ -145,7 +138,6 @@ export class DashboardComponent implements OnInit{
   }
 
   seriesOnChange(event: any): void {
-    console.log(this.valueAxis.maxValue + 'asadadaasdasadad');
     let args = event.args;
     if (args) {
       let value = args.item.value;

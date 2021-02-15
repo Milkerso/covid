@@ -58,25 +58,4 @@ export class CovidService {
     let date = todayData.toISOString().substr(0, 10) + "T23:59:59Z";
     return this.http.get(`https://api.covid19api.com/live/country/${country}/status/${status}/date/${date}`);
   }
-
-
-  // getPublicContent(): Observable<any> {
-  //   return this.http.get(API_URL + 'all', {responseType: 'text'});
-  // }
-  //
-  // getPatientBoard(): Observable<any> {
-  //   return this.http.get(API_URL + 'patient', {responseType: 'text'});
-  // }
-  //
-  // getDoctorBoard(): Observable<any> {
-  //   return this.http.get(API_URL + 'doctor', {responseType: 'text'});
-  // }
-  //
-  // getStudents(): Observable<AppUser[]> {
-  //   return this.http.get<AppUser[]>(API_URL);
-  // }
-  //
-  // saveStudent(appUser: AppUser): Observable<AppUser> {
-  //   return this.http.post(API_URL_SAVE, appUser);
-  // }
 }

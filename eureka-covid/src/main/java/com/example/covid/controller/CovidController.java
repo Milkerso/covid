@@ -1,7 +1,6 @@
 package com.example.covid.controller;
 
 
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -34,7 +33,6 @@ public class CovidController {
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         HttpEntity<String> entity = new HttpEntity<String>(headers);
-        System.out.println("https://covidapi.info/api/v1/country/" + country + "/timeseries/" + dtf.format(monthAgo) + "/" + dtf.format(now));
         return restTemplate.exchange("" +
                 "https://covidapi.info/api/v1/country/" + country + "/timeseries/" + dtf.format(monthAgo) + "/" + dtf.format(now), HttpMethod.GET, entity, String.class).getBody();
 
@@ -110,6 +108,7 @@ public class CovidController {
         return restTemplate.exchange("" +
                 "https://api.apify.com/v2/key-value-stores/3Po6TV7wTht4vIEid/records/LATEST?disableRedirect=true", HttpMethod.GET, entity, String.class).getBody();
     }
+
     @RequestMapping("/simulation")
     public String getCovidDataSimulation() {
         HttpHeaders headers = new HttpHeaders();
@@ -117,9 +116,6 @@ public class CovidController {
         HttpEntity<String> entity = new HttpEntity<String>(headers);
         Object rest = restTemplate.exchange("" +
                 "https://covidapi.info/api/v1/global/count", HttpMethod.GET, entity, Object.class).getBody();
-//        JSONObject jsonObject= new JSONObject(rest.toString());
-        System.out.println(rest);
-//        System.out.println(jsonObject);
         return null;
     }
 

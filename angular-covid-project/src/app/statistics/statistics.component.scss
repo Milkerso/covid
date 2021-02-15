@@ -7,57 +7,20 @@ table {
 }
 
 jqxChart {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 4%;
-  outline: none;
-  border: none;
-  background: none;
-  padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4%;
+    outline: none;
+    border: none;
+    background: none;
+    padding: 0;
 }
+
 .wrapper {
     display: block;
     margin-top: 10px;
 }
-
-//.predict {
-//    text-align: center;
-//    margin: 25px 0;
-//    font-weight: 300;
-//}
-
-//hr {
-//    margin: 20px 0px;
-//}
-
-//.predict-summary {
-//    display: flex;
-//    margin-top: 15px;
-//    justify-content: space-evenly;
-//    font-weight: 300;
-//    div {
-//        width: 150px;
-//        padding: 10px 5px;
-//        text-align: center;
-//        border: 1px solid rgba(0, 0, 0, 0.2);
-//        border-radius: 5%;
-//        span {
-//            display: block;
-//            margin: 5px 0;
-//            input {
-//                width: 30px;
-//            }
-//        }
-//        .label {
-//            font-size: 11px;
-//        }
-//        .value {
-//            font-size: 20px;
-//            font-weight: 400;
-//        }
-//    }
-//}
 
 @media only screen and (max-width: 600px) {
     .predict-summary {
@@ -68,202 +31,222 @@ jqxChart {
         }
     }
 }
-.casesContainer{
-  width:100%;
-}
-.dataInfo{
-  z-index: -10;
-  justify-content: center;
-  display:flex;
-}
-.cards{
-  padding: 1%;
-  text-align: center;
-  width:100%;
-  display: flex;
-  justify-content: center;
-  box-shadow: 0 8px 4px -4px gray;
-}
-.cardCases{
-  //border-left: 5px solid #002642;
-  border-right: 5px solid #002642;
-  //border-bottom: 5px solid #002642;
-  background: #FBFF66;
-}
-.cardCured{
-  //border-bottom: 5px solid #002642;
-  background: #A4E28E;
-}
-.cardDead{
-  //border-right: 5px solid #002642;
-  //border-bottom: 5px solid #002642;
-  border-left: 5px solid #002642;
-  background: #FF6666;
-}
-.casesIcon{
-  width:40%;
-  text-align: right;
-  padding-right: 5%;
-}
-.textCases{
-  width:60%;
-  text-align: left;
-  padding-left: 5%;
-}
-.text{
-  font-family: 'Righteous', cursive;
-  font-size: 20px;
-}
-.text1{
-  padding-left: 7%;
-}
-.wyniki{
-  font-size: 40px;
-  font-weight: bold;
-  white-space: nowrap;
-}
-.wynik1{
-  padding-left: 8%;
-}
-.cardImage{
-  height: 80px;
-  width: 80px;
+
+.casesContainer {
+    width: 100%;
 }
 
+.dataInfo {
+    z-index: -10;
+    justify-content: center;
+    display: flex;
+}
 
+.cards {
+    padding: 1%;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 8px 4px -4px gray;
+}
 
-.predict{
-  margin-top: 5%;
-  width:90%;
-  margin-left: auto;
-  margin-right:auto;
-  height: 20%;
+.cardCases {
+    border-right: 5px solid #002642;
+    background: #FBFF66;
 }
-.predictCases{
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-top: 3%;
-  height: 100%;
 
+.cardCured {
+    background: #A4E28E;
 }
-.predictCured{
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-top: 3%;
-  height: 100%;
+
+.cardDead {
+    border-left: 5px solid #002642;
+    background: #FF6666;
 }
-.predictDead{
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-top: 3%;
-  height: 100%;
+
+.casesIcon {
+    width: 40%;
+    text-align: right;
+    padding-right: 5%;
 }
-.predict7days{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  width:20%;
-  height:100%;
-  padding: 40px;
-  position: relative;
-  overflow: hidden;
-  box-shadow:10px 8px 18px -3px rgba(79,79,79,0.71);
-  border-radius: 15px;
+
+.textCases {
+    width: 60%;
+    text-align: left;
+    padding-left: 5%;
 }
-.predict7days:before{
-  content: ' ';
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  opacity: 0.2;
-  background: url(../../assets/calendar7.png);
-  background-repeat: no-repeat;
-  background-size: 40%;
-  background-position: center;
+
+.text {
+    font-family: 'Righteous', cursive;
+    font-size: 20px;
 }
-.predict30days{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  width:20%;
-  height:100%;
-  padding: 40px;
-  position: relative;
-  overflow: hidden;
-  box-shadow:10px 8px 18px -3px rgba(79,79,79,0.71);
-  border-radius: 15px;
+
+.text1 {
+    padding-left: 7%;
 }
-.predict30days:before{
-  content: ' ';
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  opacity: 0.2;
-  background: url(../../assets/calendar30.png);
-  background-repeat: no-repeat;
-  background-size: 40%;
-  background-position: center;
+
+.wyniki {
+    font-size: 40px;
+    font-weight: bold;
+    white-space: nowrap;
 }
-.predictOwn{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  width:20%;
-  height:100%;
-  padding: 40px;
-  position: relative;
-  overflow: hidden;
-  box-shadow:10px 8px 18px -3px rgba(79,79,79,0.71);
-  border-radius: 15px;
+
+.wynik1 {
+    padding-left: 8%;
 }
-.predictOwn:before{
-  content: ' ';
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  opacity: 0.2;
-  background: url(../../assets/kisspng-missing-data-computer-icons-symbol-encapsulated-po-5ae4bbc53d9743.1670749515249397172523.png);
-  background-repeat: no-repeat;
-  background-size: 60%;
-  background-position: center;
+
+.cardImage {
+    height: 80px;
+    width: 80px;
 }
-.background-yellow{
-  background-color: #FBFF66;;
+
+.predict {
+    margin-top: 5%;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 20%;
 }
-.background-red{
-  background-color: #FF6666;
+
+.predictCases {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 3%;
+    height: 100%;
 }
-.background-green{
-  background-color: #A4E28E;
+
+.predictCured {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 3%;
+    height: 100%;
 }
-.label{
-  font-size: 23px;
-  text-align: center;
-  font-family: 'Righteous', cursive;
-  line-height: 110%;
+
+.predictDead {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 3%;
+    height: 100%;
 }
-.value{
-  font-size: 40px;
-  font-family: 'Rubik', sans-serif;
-  margin-top: 14%;
-  font-weight: bold;
-  white-space: nowrap;
+
+.predict7days {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 20%;
+    height: 100%;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 10px 8px 18px -3px rgba(79, 79, 79, 0.71);
+    border-radius: 15px;
+}
+
+.predict7days:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.2;
+    background: url(../../assets/calendar7.png);
+    background-repeat: no-repeat;
+    background-size: 40%;
+    background-position: center;
+}
+
+.predict30days {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 20%;
+    height: 100%;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 10px 8px 18px -3px rgba(79, 79, 79, 0.71);
+    border-radius: 15px;
+}
+
+.predict30days:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.2;
+    background: url(../../assets/calendar30.png);
+    background-repeat: no-repeat;
+    background-size: 40%;
+    background-position: center;
+}
+
+.predictOwn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 20%;
+    height: 100%;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 10px 8px 18px -3px rgba(79, 79, 79, 0.71);
+    border-radius: 15px;
+}
+
+.predictOwn:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.2;
+    background: url(../../assets/kisspng-missing-data-computer-icons-symbol-encapsulated-po-5ae4bbc53d9743.1670749515249397172523.png);
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-position: center;
+}
+
+.background-yellow {
+    background-color: #FBFF66;
+    ;
+}
+
+.background-red {
+    background-color: #FF6666;
+}
+
+.background-green {
+    background-color: #A4E28E;
+}
+
+.label {
+    font-size: 23px;
+    text-align: center;
+    font-family: 'Righteous', cursive;
+    line-height: 110%;
+}
+
+.value {
+    font-size: 40px;
+    font-family: 'Rubik', sans-serif;
+    margin-top: 14%;
+    font-weight: bold;
+    white-space: nowrap;
 }

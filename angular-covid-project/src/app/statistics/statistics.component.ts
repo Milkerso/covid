@@ -64,9 +64,6 @@ export class StatisticsComponent implements AfterViewInit, OnInit {
       {
         let date1 = globalResult[i];
         let date2 = Object.keys(date1)
-        // let date2 = Object.keys(date1.toString());
-        // let date3 = date1[date2];
-        // let date4 = date3["confirmed"];
 
         let date3 = date1[date2[0]];
         ELEMENT_DATA.push({ Lp: i, region: date2[0], infected: date3.confirmed, deceased: date3.recovered ,deaths: date3.deaths})
@@ -234,7 +231,6 @@ valueAxis: any =
     let data10=[];
     this._covid.getWorldData()
       .subscribe(res => {
-        console.log(res);
         this.data.pop();
         for (let i = res['count']-30; i < res['count']; i++) {
           let date1 = res['result'];
@@ -289,11 +285,7 @@ valueAxis: any =
           trainData.push([i, Math.log(data10[i])]);
           trainData1.push([i, Math.log(data11[i])]);
           trainData2.push([i, Math.log(data11[i])]);
-
-          console.log(i);
-          console.log(data10[i]);
         }
-        console.log(trainData)
         const result = regression.linear(trainData);
         const result1 = regression.linear(trainData1);
         const result2 = regression.linear(trainData2);
@@ -304,11 +296,6 @@ valueAxis: any =
 
         this.isRegressionDone = true;
         this.lastData = date9;
-
-
-        console.log(this.lastData)
-        console.log(this.growthRate)
-        console.log(this.getPredictedValue(1));
           })
         }
         precision(){

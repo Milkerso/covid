@@ -32,13 +32,10 @@ export class CovidChartsComponent implements OnInit, AfterViewInit {
   }
   ngOnInit() {
 
-
-    // console.log(this.data);
   }
   mouseOverIndex = -1;
 
   public onMouseOver(index) {
-    // console.log(index)
     this.mouseOverIndex = index;
   }
 
@@ -68,7 +65,6 @@ export class CovidChartsComponent implements OnInit, AfterViewInit {
         this.dataSource = new MatTableDataSource(ELEMENT_DATA);
 
        this.sampleData= this.sampleData.sort((a, b)  => (a.infected < b.infected) ? 1 : ((b.infected < a.infected) ? -1 : 0));
-       console.log(this.sampleData)
 
         this.myChart.update();
       });
@@ -90,23 +86,6 @@ export class CovidChartsComponent implements OnInit, AfterViewInit {
 
     return '90%';
   }
-
-  // xAxis: any =
-  // {
-  //   dataField: 'region',
-  //   gridLines: { visible: true },
-  //   flip: false
-  // };
-  // valueAxis: any =
-  //   {
-  //     flip: true,
-  //     labels: {
-  //       visible: true,
-  //       formatFunction: (value: string) => {
-  //         return parseInt(value) / 1;
-  //       }
-  //     }
-  //   };
 
     xAxis: any =
     {

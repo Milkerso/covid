@@ -15,7 +15,7 @@
       </div>
       <div class="textCases">
         <p class="text text1">Wyleczeni</p>
-        <h2 class="wyniki">{{recovered}}</h2>
+        <h2 class="wyniki">{{menuRecovered}}</h2>
       </div>
     </div>
     <div class="cards cardDead">
@@ -24,30 +24,24 @@
       </div>
       <div class="textCases">
         <p class="text text1">Zgony</p>
-        <h2 class="wyniki">{{deaths}}</h2>
+        <h2 class="wyniki">{{menuDeaths}}</h2>
       </div>
     </div>
   </div>
 </div>
-<jqxChart #myChart [width]="'90%' " [height]="550 " [title]=" 'Statystyka ze świata' " [enableAxisTextAnimation]="true " [description]=" '' " [animationDuration]="1000 " [showLegend]="true " [enableAnimations]="true " [padding]="padding
-                " [titlePadding]="titlePadding " [source]="data " [xAxis]="xAxis " [valueAxis]="valueAxis " [seriesGroups]="seriesGroups " [colorScheme]=" 'scheme01' ">
+<jqxChart #myChart [width]="'100%' " [height]="550 " [title]=" 'Statystyka ze świata - dane z ostatniego miesiąca' " [enableAxisTextAnimation]="true " [description]=" '' " [animationDuration]="1000 " [showLegend]="true " [enableAnimations]="true " [padding]="padding
+                " [titlePadding]="titlePadding " [source]="data " [xAxis]="xAxis " [valueAxis]="valueAxis " [seriesGroups]="seriesGroups " [colorScheme]=" 'scheme01' " [showBorderLine]="false" [legendLayout]="legendLayout">
 </jqxChart>
-<table>
-    <tbody>
-        <tr>
-            <td style="padding-left: 50px ">
-                <p>Typ wykresu:</p>
-                <jqxDropDownList (onChange)="seriesOnChange($event) " [width]="200 " [height]="25 " [selectedIndex]="2 " [dropDownHeight]="100 " [source]="seriesList ">
-                </jqxDropDownList>
-            </td>
-            <td>
-                <p>Kolor wykresu:</p>
-                <jqxDropDownList (onChange)="colorsOnChange($event) " [width]="200 " [height]="25 " [selectedIndex]="2 " [dropDownHeight]="100 " [source]="colorsSchemesList ">
-                </jqxDropDownList>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div class="chartChanger">
+  <div class="typWykresu">
+    <label class="customLabel">Typ wykresu:</label>
+    <jqxDropDownList class="custom-select" (onChange)="seriesOnChange($event) " [width]="180" [height]="30" [selectedIndex]="2 " [dropDownHeight]="100 " [dropDownWidth]="180 " [source]="seriesList ">    </jqxDropDownList>
+  </div>
+  <div class="koloryWykresu">
+    <label class="customLabel">Wybierz kolor:</label>
+    <jqxDropDownList class="custom-select" (onChange)="colorsOnChange($event) " [width]="180" [height]="30" [selectedIndex]="2 " [dropDownHeight]="100 " [dropDownWidth]="180 " [source]="colorsSchemesList ">    </jqxDropDownList>
+  </div>
+</div>
 <div class="predict">
   <div class="predictCases">
     <div class="predict7days background-yellow">
@@ -59,7 +53,7 @@
       <span class="value">{{getPredictedValue(30)}}</span>
     </div>
     <div class="predictOwn background-yellow">
-      <span class="label">Przewidywana zmiana po <input  style ="width: 50px;" type="number" [value]="predictDay" (change)="predictDay = $event.target.value" /> dniach</span>
+      <span class="label">Przewidywana zmiana po <input class="inputs" type="number" [value]="predictDay" (change)="predictDay = $event.target.value" /> dniach</span>
       <span class="value">{{getPredictedValue(predictDay)}}</span>
     </div>
   </div>
@@ -73,7 +67,7 @@
       <span class="value">{{getPredictedValue1(30)}}</span>
     </div>
     <div class="predictOwn background-green">
-      <span class="label">Przewidywana zmiana po <input  style ="width: 50px;" type="number" [value]="predictDay" (change)="predictDay = $event.target.value" /> dniach</span>
+      <span class="label">Przewidywana zmiana po <input class="inputs" type="number" [value]="predictDay" (change)="predictDay = $event.target.value" /> dniach</span>
       <span class="value">{{getPredictedValue1(predictDay)}}</span>
     </div>
   </div>
@@ -87,7 +81,7 @@
       <span class="value">{{getPredictedValue2(30)}}</span>
     </div>
     <div class="predictOwn background-red">
-      <span class="label">Przewidywana zmiana po <input  style ="width: 50px;" type="number" [value]="predictDay" (change)="predictDay = $event.target.value" /> dniach</span>
+      <span class="label">Przewidywana zmiana po <input  class="inputs" type="number" [value]="predictDay" (change)="predictDay = $event.target.value" /> dniach</span>
       <span class="value">{{getPredictedValue2(predictDay)}}</span>
     </div>
   </div>

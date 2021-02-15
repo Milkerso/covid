@@ -1,31 +1,37 @@
+<div class="casesContainer">
+  <div class="dataInfo">
+    <div class="cards cardCases">
+      <div class="casesIcon">
+        <img class="cardImage" src="../../assets/add-user.png">
+      </div>
+      <div class="textCases">
+        <p class="text">Liczba przypadków</p>
+        <h2 class="wyniki wynik1">{{totalCases}}</h2>
+      </div>
+    </div>
+    <div class="cards cardCured">
+      <div class="casesIcon">
+        <img class="cardImage" src="../../assets/healthcare.png">
+      </div>
+      <div class="textCases">
+        <p class="text text1">Wyleczeni</p>
+        <h2 class="wyniki">{{totalRecovered}}</h2>
+      </div>
+    </div>
+    <div class="cards cardDead">
+      <div class="casesIcon">
+        <img class="cardImage" src="../../assets/remove-user.png">
+      </div>
+      <div class="textCases">
+        <p class="text text1">Zgony</p>
+        <h2 class="wyniki">{{totalDeaths}}</h2>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="summary">
     Statystyki pobrane z dnia:
     <strong> {{asOnDate | date : 'MMM d, y hh:mm a'}}</strong>
-</div>
-<div class="container-fluid">
-    <div style="justify-content: center;" class="row">
-        <div style="min-width: 200px; margin-right: 20px;" class="col-md-4" fxFlex="50" fxFlex.xl="16.6" fxFlex.lg="16.6" fxFlex.md="33.3" fxFlex.sm="33.3" class="p-1">
-            <mat-card style=" background-color:pink !important" class="gradient-green tile p-1">
-                <mat-icon>group</mat-icon>
-                <h2>{{totalCases}}</h2>
-                <p>Liczba przypadków</p>
-            </mat-card>
-        </div>
-        <div style="min-width: 200px; margin-right: 20px;margin-left: 20px;" class="col-md-4" fxFlex="50" fxFlex.xl="16.6" fxFlex.lg="16.6" fxFlex.md="33.3" fxFlex.sm="33.3" class="p-1">
-            <mat-card style="background-color:green !important" class="gradient-red tile p-1 ">
-                <mat-icon>local_hospital</mat-icon>
-                <h2>{{totalRecovered}}</h2>
-                <p>Wyleczeni</p>
-            </mat-card>
-        </div>
-        <div style="min-width: 200px ;margin-left: 20px; " class="col-md-4 " fxFlex="50 " fxFlex.xl="16.6 " fxFlex.lg="16.6 " fxFlex.md="33.3 " fxFlex.sm="33.3 " class="p-1 ">
-            <mat-card style="background-color:red !important" class="gradient-orange tile p-1 ">
-                <mat-icon>person_remove</mat-icon>
-                <h2>{{totalDeaths}}</h2>
-                <p>Zgony</p>
-            </mat-card>
-        </div>
-    </div>
 </div>
 <mat-form-field style="margin-left: 20px;">
     <input matInput (keyup)="applyFilter($event.target.value)" (keydown)="keydown($event.target.value)" placeholder="Państwo">

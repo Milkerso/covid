@@ -106,9 +106,9 @@ export class CountryComponent implements OnInit {
   }
 
   calculateSummary(source: any[]): void {
-    this.totalCases = source.map(d => d.TotalConfirmed).reduce((arr, val) => arr + val, 0);
-    this.totalDeaths = source.map(d => d.TotalDeaths).reduce((arr, val) => arr + val, 0);
-    this.totalRecovered = source.map(d => d.TotalRecovered).reduce((arr, val) => arr + val, 0);
+    this.totalCases = source.map(d => d.TotalConfirmed).reduce((arr, val) => arr + val, 0).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ');
+    this.totalDeaths = source.map(d => d.TotalDeaths).reduce((arr, val) => arr + val, 0).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ');
+    this.totalRecovered = source.map(d => d.TotalRecovered).reduce((arr, val) => arr + val, 0).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ');
   }
 
 }

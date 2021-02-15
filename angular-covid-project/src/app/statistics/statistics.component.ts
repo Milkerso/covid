@@ -33,6 +33,8 @@ export class StatisticsComponent implements AfterViewInit, OnInit {
   growthRate2: number = 0;
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);  constructor(private _covid: CovidService) { }
   displayedColumns: string[] = ['Lp','region', 'infected','deceased','deaths'];
+
+  gridLinesColor = 'black';
   @ViewChild(MatPaginator,{static: false}) paginator: MatPaginator;
 
 
@@ -86,7 +88,7 @@ export class StatisticsComponent implements AfterViewInit, OnInit {
       { text: 'Confirmed', value: 50 },
       { text: 'Recovered', value: 50 }
     ];
-  padding: any = { left: 5, top: 5, right: 5, bottom: 5 };
+  padding: any = { left: 0, top: 0, right: 250, bottom: 0 };
   titlePadding: any = { left: 5, top: 5, right: 5, bottom: 5 };
   getWidth(): any {
     if (document.body.offsetWidth < 850) {
@@ -138,8 +140,12 @@ export class StatisticsComponent implements AfterViewInit, OnInit {
 
   xAxis: any =
   {
+    tickMarksColor:this.gridLinesColor,
+    title:{ text: 'Dni'},
     unitInterval: 1,
-    gridLines: {interval: 2},
+    titlePadding:{left: 250, top: 0, right: 0, bottom: 0 },
+    gridLines: {interval: 1,
+      color: 'this.gridLinesColor'},
     valuesOnTicks: false,
     dataField: 'Day',
     textRotationAngle: 25,
@@ -147,9 +153,13 @@ export class StatisticsComponent implements AfterViewInit, OnInit {
   };
 valueAxis: any =
   {
+    tickMarksColor:this.gridLinesColor,
+    gridLines: {
+      color: this.gridLinesColor
+    },
     minValue: 0,
     maxValue: 70000,
-    title: {text: 'Ilość'},
+    title: { text: 'Liczba przypadków' },
     labels: {horizontalAlignment: 'right'}
   };
 
@@ -165,7 +175,6 @@ valueAxis: any =
             displayText: 'Potwierdzone',
             opacity: 1,
             lineWidth: 1,
-            symbolType: 'circle',
             fillColorSymbolSelected: 'white',
             radius: 15
           },
@@ -174,7 +183,6 @@ valueAxis: any =
             displayText: 'Wyleczone',
             opacity: 1,
             lineWidth: 1,
-            symbolType: 'circle',
             fillColorSymbolSelected: 'white',
             radius: 15
           },
@@ -183,13 +191,19 @@ valueAxis: any =
             displayText: 'Zgony',
             opacity: 1,
             lineWidth: 1,
-            symbolType: 'circle',
             fillColorSymbolSelected: 'white',
             radius: 15
           }
         ]
       }
     ];
+  legendLayout:any = {
+    left: document.body.offsetWidth - 200,
+    top: document.body.offsetHeight * 0.15,
+    width:100,
+    height:100,
+    flow:'vertical'
+  }
     colorsSchemesList: string[] = ['scheme01', 'scheme02', 'scheme03', 'scheme04', 'scheme05', 'scheme06', 'scheme07', 'scheme08'];
     seriesList: string[] = ['splinearea', 'spline', 'column', 'scatter', 'stackedcolumn', 'stackedsplinearea', 'stackedspline'];
     colorsOnChange(event: any): void {
@@ -216,11 +230,13 @@ valueAxis: any =
     public confirmed;
     public recovered;
     public deaths;
+
+    public menuRecovered;
+    public menuDeaths;
     @ViewChild('myChart', {static: false}) myChart: jqxChartComponent;
 
     getDataForCountry()
     {
-      let date3 = 0;
     let date4 = 0;
     let date5 = 0;
     let date6;
@@ -234,8 +250,8 @@ valueAxis: any =
         this.data.pop();
         for (let i = res['count']-30; i < res['count']; i++) {
           let date1 = res['result'];
-          let date2 = Object.keys(date1)
-          let date3 = date1[date2[i]]
+          let date2 = Object.keys(date1);
+          let date3 = date1[date2[i]];
           date9 = date3["confirmed"];
 
           date4 = date3["deaths"];
@@ -258,9 +274,11 @@ valueAxis: any =
             maxDate = date5;
           }
         }
-        this.deaths=date4.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ');
+        this.deaths=date4;
         this.confirmed=date9.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ');
-        this.recovered=date5.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ');
+        this.recovered=date5;
+        this.menuDeaths = this.deaths.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ');
+        this.menuRecovered = this.recovered.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ');
         this.valueAxis.maxValue = maxDate;
         this.myChart.update();
         let trainData = [];
@@ -272,15 +290,15 @@ valueAxis: any =
         for (let i = 0; i < res['count']; i++){
           let date1 = res['result'];
 
-          let date2 = Object.keys(date1)
-          let date3 = date1[date2[i]]
+          let date2 = Object.keys(date1);
+          let date3 = date1[date2[i]];
           date9 = date3["confirmed"];
-
           date4 = date3["deaths"];
-          data10.push(date9);
           date5 = date3["recovered"];
-          data11.push(date5)
-          data12.push(date4)
+
+          data10.push(date9);
+          data11.push(date5);
+          data12.push(date4);
 
           trainData.push([i, Math.log(data10[i])]);
           trainData1.push([i, Math.log(data11[i])]);
@@ -289,6 +307,7 @@ valueAxis: any =
         const result = regression.linear(trainData);
         const result1 = regression.linear(trainData1);
         const result2 = regression.linear(trainData2);
+        result1.equation[0] =0.01;
 
         this.growthRate = Math.exp(result.equation[0]);
         this.growthRate1 = Math.exp(result1.equation[0]);
